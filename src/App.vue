@@ -1,6 +1,14 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+  <v-app>
+    <v-app-bar
+      app
+      color="primary"
+      dark
+    >
+    </v-app-bar>
+
+    <v-main>
+      <img alt="Vue logo" src="./assets/logo.png">
     <BlocklyComponent id="blockly1">
       <block type="controls_ifelse"></block>
       <block type="logic_compare"></block>
@@ -31,45 +39,22 @@
       <button v-on:click="showCode()">Show JavaScript</button>
       <pre v-html="code"></pre>
     </p>
-  </div>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-/**
- * @license
- * 
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/**
- * @fileoverview Main Vue component that includes the Blockly component.
- * @author samelh@google.com (Sam El-Husseini)
- */
-
-import BlocklyComponent from './components/BlocklyComponent.vue'
+import BlocklyJS from 'blockly/javascript';
+import BlocklyComponent from './components/BlocklyComponent.vue';
 import './blocks/stocks';
 import './prompt';
-
-import BlocklyJS from 'blockly/javascript';
 
 export default {
   name: 'app',
   components: {
-    BlocklyComponent
+    BlocklyComponent,
   },
-  data(){
+  data() {
     return {
       code: '',
       options: {
@@ -79,7 +64,7 @@ export default {
             spacing: 25,
             length: 3,
             colour: '#ccc',
-            snap: true
+            snap: true,
           },
         toolbox:
         `<xml>
@@ -119,16 +104,16 @@ export default {
             <block type="stock_buy_prog"></block>
             <block type="stock_fetch_price"></block>
           </category>
-        </xml>`
-      }
-    }
+        </xml>`,
+      },
+    };
   },
   methods: {
     showCode() {
-      this.code = BlocklyJS.workspaceToCode(this.$refs["foo"].workspace);
-    }
-  }
-}
+      this.code = BlocklyJS.workspaceToCode(this.$refs.foo.workspace);
+    },
+  },
+};
 </script>
 
 <style>
