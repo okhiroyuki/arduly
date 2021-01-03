@@ -29,6 +29,11 @@
     >
       {{ new Date().getFullYear() }} — <strong>Arduly</strong>
     </v-col>
+    <Adsense
+      data-ad-client="ca-pub-1296166689727642"
+      data-ad-slot="8885070883">
+    </Adsense>
+
   </v-footer>
   </v-app>
 </template>
