@@ -1,7 +1,7 @@
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  publicPath: 'src',
+  publicPath: './',
   outputDir: 'docs',
   devServer: {
     port: 3000,
@@ -11,7 +11,7 @@ module.exports = {
       new CopyPlugin([
         {
           from: '/Users/okhiroyuki/Documents/github/arduly/node_modules/blockly/media',
-          to: '/Users/okhiroyuki/Documents/github/arduly/dist/media',
+          to: '/Users/okhiroyuki/Documents/github/arduly/docs/media',
         },
       ]),
     ],
