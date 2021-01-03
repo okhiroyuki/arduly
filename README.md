@@ -1,21 +1,21 @@
-[Home](../README.md)
+# arduly [![Built on Blockly](https://tinyurl.com/built-on-blockly)](https://github.com/google/blockly)
 
-# blockly-vue-sample [![Built on Blockly](https://tinyurl.com/built-on-blockly)](https://github.com/google/blockly)
+Blockly for Arduino built with [Vue](https://vuejs.org/).
 
-This sample shows how to load Blockly in a [Vue](https://vuejs.org/) project.
+## Development
 
-## Installation
+### Installation
 
+```bash
+npm ci
 ```
-npm install
-```
 
-## Running
+### Running
 
-```
+```bash
 npm run start
 ```
 
-## Browse
+### Browse
 
 Open [http://localhost:3000/](http://localhost:3000/)
