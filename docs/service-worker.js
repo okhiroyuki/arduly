@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.2f79e7334d9c031116eac6fd295c7888.js"
+  "precache-manifest.c444185b8cc88f725b5b6fcc8dc1bce8.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "arduly"});
