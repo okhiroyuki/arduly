@@ -48,6 +48,14 @@ export default {
       options.toolbox = this.$refs.blocklyToolbox;
     }
     this.workspace = Blockly.inject(this.$refs.blocklyDiv, options);
+    this.workspace.addChangeListener(this.onEvent);
+  },
+  methods: {
+    onEvent(event) {
+      if (event.type === Blockly.Events.MOVE) {
+        this.$emit('move');
+      }
+    },
   },
 };
 </script>

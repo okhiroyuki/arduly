@@ -5,41 +5,31 @@
       color="primary"
       dark
     >
+    <v-app-bar-nav-icon></v-app-bar-nav-icon>
+
+    <v-toolbar-title>Arduly</v-toolbar-title>
+
     </v-app-bar>
 
     <v-main>
-      <img alt="Vue logo" src="./assets/logo.png">
-    <BlocklyComponent id="blockly1">
-      <block type="controls_ifelse"></block>
-      <block type="logic_compare"></block>
-      <block type="logic_operation"></block>
-      <block type="controls_repeat_ext">
-          <value name="TIMES">
-              <shadow type="math_number">
-                  <field name="NUM">10</field>
-              </shadow>
-          </value>
-      </block>
-      <block type="logic_operation"></block>
-      <block type="logic_negate"></block>
-      <block type="logic_boolean"></block>
-      <block type="logic_null" disabled="true"></block>
-      <block type="logic_ternary"></block>
-      <block type="text_charAt">
-          <value name="VALUE">
-              <block type="variables_get">
-                  <field name="VAR">text</field>
-              </block>
-          </value>
-      </block>
-    </BlocklyComponent>
-
-    <BlocklyComponent id="blockly2" :options="options" ref="foo"></BlocklyComponent>
-    <p id="code">
-      <button v-on:click="showCode()">Show JavaScript</button>
-      <pre v-html="code"></pre>
-    </p>
+      <BlocklyComponent
+        id="blockly"
+        :options="options"
+        ref="foo"
+        @move="updateCode"
+      ></BlocklyComponent>
+      <p id="code">
+        <pre v-html="code"></pre>
+      </p>
     </v-main>
+    <v-footer padless>
+    <v-col
+      class="text-center"
+      cols="12"
+    >
+      {{ new Date().getFullYear() }} — <strong>Arduly</strong>
+    </v-col>
+  </v-footer>
   </v-app>
 </template>
 
@@ -66,6 +56,15 @@ export default {
             colour: '#ccc',
             snap: true,
           },
+        zoom: {
+          controls: true,
+          wheel: true,
+          startScale: 1.0,
+          maxScale: 3,
+          minScale: 0.3,
+          scaleSpeed: 1.2,
+          pinch: true,
+        },
         toolbox:
         `<xml>
           <category name="Logic" colour="%{BKY_LOGIC_HUE}">
@@ -109,7 +108,7 @@ export default {
     };
   },
   methods: {
-    showCode() {
+    updateCode() {
       this.code = BlocklyJS.workspaceToCode(this.$refs.foo.workspace);
     },
   },
@@ -117,40 +116,20 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
-
-html, body {
-  margin: 0;
-}
-
 #code {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 50%;
-  height: 50%;
-  margin: 0;
-  background-color: beige;
-}
-
-#blockly1 {
   position: absolute;
   right: 0;
   top: 0;
   width: 50%;
-  height: 50%;
+  height: 100%;
+  margin: 0;
 }
 
-#blockly2 {
+#blockly {
   position: absolute;
   left: 0;
-  bottom: 0;
+  top: 0;
   width: 50%;
-  height: 50%;
+  height: 100%;
 }
 </style>
