@@ -1,6 +1,8 @@
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
+  publicPath: 'src',
+  outputDir: 'docs',
   devServer: {
     port: 3000,
   },
